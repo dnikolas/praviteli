@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Правители государства с древнейших времён — современная таблица</title>
+<style>
+  :root{
+    --paper:#F6F4EE;
+    --card:#FFFFFF;
+    --ink:#23201A;
+    --muted:#6E6759;
+    --line:#E3DCCB;
+    --accent:#8A3324;
+    --nov:#7C8480;
+    --kiev:#B58A2E;
+    --vlad:#4A6FA5;
+    --mos:#3F7A52;
+    --spb:#A64455;
+    --ussr:#C03B2C;
+    --rom:#6B5CA5;
+    --rf:#2E5289;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    padding-bottom:80px;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+
+  /* ---------- header ---------- */
+  header.page{padding:44px 0 20px;border-bottom:3px double var(--line)}
+  .eyebrow{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:10px;
+  }
+  h1{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:clamp(30px,5vw,44px);line-height:1.12;font-weight:700;
+    max-width:20ch;
+  }
+  .lede{margin-top:12px;color:var(--muted);max-width:60ch}
+  .epigraph{
+    margin:20px 0 0;padding:14px 18px;border-left:3px solid var(--accent);
+    background:var(--card);border-radius:0 10px 10px 0;
+    font-family:Georgia,serif;font-style:italic;font-size:14.5px;color:#4a4438;
+  }
+  .epigraph b{display:block;margin-top:6px;font-style:normal;font-size:12px;
+    letter-spacing:.1em;color:var(--muted);font-weight:600}
+
+  /* ---------- toolbar ---------- */
+  .toolbar{
+    position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);
+    padding:10px 0;margin-top:24px;
+  }
+  .toolbar .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .search{
+    flex:1 1 240px;min-width:200px;display:flex;align-items:center;gap:8px;
+    background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;
+  }
+  .search:focus-within{border-color:var(--accent)}
+  .search svg{flex:none;opacity:.5}
+  .search input{
+    border:0;outline:0;background:transparent;font:inherit;width:100%;color:var(--ink);
+  }
+  .search input::placeholder{color:#A39B88}
+  .btn{
+    border:1.5px solid var(--line);background:var(--card);border-radius:10px;
+    padding:8px 14px;font:inherit;font-size:14px;font-weight:600;color:var(--ink);
+    cursor:pointer;transition:border-color .15s, background .15s;
+  }
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn:focus-visible,.search input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .count{font-size:13.5px;color:var(--muted);white-space:nowrap}
+  .count b{color:var(--ink)}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+  .chips a{
+    text-decoration:none;color:var(--ink);font-size:13px;font-weight:600;
+    border:1px solid var(--line);border-radius:999px;padding:3px 11px;background:var(--card);
+    transition:border-color .15s;
+  }
+  .chips a:hover{border-color:var(--muted)}
+  .chips a i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+
+  /* ---------- legend ---------- */
+  .legend{
+    display:flex;gap:8px 18px;flex-wrap:wrap;margin:16px 0 4px;
+    font-size:13px;color:var(--muted);
+  }
+  .legend span{white-space:nowrap}
+  .legend b{font-weight:700;color:var(--ink);font-family:ui-monospace,monospace}
+
+  /* ---------- era sections & spine ---------- */
+  main{margin-top:8px}
+  .era{position:relative;padding:26px 0 10px 30px}
+  .era::before{
+    content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:var(--line);
+  }
+  .era:first-of-type::before{top:34px}
+  .era-head{position:relative;margin-bottom:12px}
+  .era-head::before{
+    content:"";position:absolute;left:-30px;top:6px;width:20px;height:20px;border-radius:50%;
+    background:var(--era-color);border:4px solid var(--paper);box-shadow:0 0 0 2px var(--era-color);
+  }
+  .era-head .cap{
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;
+  }
+  .era-head h2{
+    font-family:Georgia,serif;font-size:clamp(22px,3.4vw,30px);font-weight:700;line-height:1.15;
+  }
+  .era-head .span{
+    font-family:ui-monospace,"SF Mono",Consolas,monospace;font-size:13px;color:var(--era-color);
+    font-weight:700;letter-spacing:.02em;
+  }
+  .dyn{
+    display:inline-block;margin:6px 0 2px;padding:3px 12px;border-radius:999px;
+    font-size:12px;font-weight:700;letter-spacing:.12em;color:#fff;background:var(--rom);
+  }
+  .dyn.ryur{background:var(--kiev)}
+
+  /* ---------- table ---------- */
+  .tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:12px}
+  table{width:100%;border-collapse:collapse;min-width:640px}
+  thead th{
+    font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+    text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);background:#FBFAF6;
+    position:sticky;top:0;
+  }
+  tbody td{padding:9px 14px;border-bottom:1px solid #EFEAE0;vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr{transition:background .12s}
+  tbody tr:hover{background:#FAF7EF}
+  td.years,td.life{
+    font-family:ui-monospace,"SF Mono",Consolas,"Cascadia Mono",monospace;
+    font-size:13.5px;white-space:nowrap;font-variant-numeric:tabular-nums;
+  }
+  td.dur{white-space:nowrap;color:var(--muted);font-size:13.5px}
+  td.num{color:#B9B09B;font-variant-numeric:tabular-nums;font-size:12.5px;width:36px}
+  td.name b{font-weight:650}
+  .nick{color:var(--accent);font-style:italic}
+  .origin{display:inline-block;font-size:12px;color:var(--muted);
+    background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-left:6px}
+  .mark-x{color:var(--ussr);font-weight:700}
+  tr.divider td{
+    background:transparent;border-bottom:0;padding:12px 14px 4px;
+  }
+  tr.divider .dyn{margin:0}
+  .empty-note{padding:18px 14px;color:var(--muted);font-style:italic}
+
+  /* ---------- note / footer ---------- */
+  .note{
+    margin:26px 0 0;padding:14px 18px;border:1px dashed var(--line);border-radius:10px;
+    font-size:13.5px;color:var(--muted);background:var(--card);
+  }
+  .note b{color:var(--ink)}
+  tr.added td{background:#EEF3F7}
+  tr.added:hover td{background:#E2ECF4}
+  .dyn.rf{background:var(--rf)}
+  footer{margin-top:34px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px}
+
+  @media (max-width:560px){
+    td.num{display:none}
+    td.dur{display:none}
+  }
+  @media print{
+    .toolbar,.chips{display:none}
+    body{background:#fff}
+    .tablewrap{border:0}
+    tr{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="wrap">
+    <div class="eyebrow">Хронологическая таблица для школьника · по плакату «Правители государства с древнейших времён» · дополнено до 2026 года</div>
+    <h1>Правители государства с древнейших времён</h1>
+    <p class="lede">Все правители Руси, СССР и России — от легендарного Гостомысла до наших дней. Одиннадцать с лишним веков истории, разбитые на шесть эпох по столицам государства.</p>
+    <blockquote class="epigraph">«Исторические заслуги судятся не по тому, чего не дали исторические деятели сравнительно с современными требованиями, а по тому, что они дали нового сравнительно со своими предшественниками»<b>— В. И. Ленин · эпиграф с плаката</b></blockquote>
+  </div>
+</header>
+
+<div class="toolbar" role="navigation">
+  <div class="wrap">
+    <div class="row">
+      <label class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Найти правителя: Невский, Мономах, 1613…" aria-label="Поиск по таблице">
+      </label>
+      <span class="count">Показано: <b id="cnt">111</b> из 111</span>
+      <button class="btn" id="csv" type="button">Скачать CSV</button>
+    </div>
+    <nav class="chips" aria-label="Эпохи">
+      <a href="#era-nov"><i style="background:var(--nov)"></i>Новгород</a>
+      <a href="#era-kiev"><i style="background:var(--kiev)"></i>Киев</a>
+      <a href="#era-vlad"><i style="background:var(--vlad)"></i>Владимир</a>
+      <a href="#era-mos"><i style="background:var(--mos)"></i>Москва</a>
+      <a href="#era-spb"><i style="background:var(--spb)"></i>Санкт-Петербург</a>
+      <a href="#era-ussr"><i style="background:var(--ussr)"></i>Москва · с 1918</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="legend">
+    <span><b>~</b> — год приблизительный</span>
+    <span><b>х</b> — насильственная смерть (так помечено на плакате)</span>
+    <span><b>[…]</b> — происхождение, город, титул</span>
+    <span><b>«…»</b> — прозвище</span>
+    <span><b>н. в.</b> — правление продолжается</span>
+    <span><b>Лет у власти</b> — рассчитано по годам правления</span>
+    <span><i style="display:inline-block;width:11px;height:11px;background:#EEF3F7;border:1px solid #CBDCE9;border-radius:3px"></i> — добавлено до 2026 г. (на плакате отсутствует)</span>
+  </div>
+  <div id="eras"></div>
+
+  <div class="note">
+    <b>Как читать эту таблицу.</b> Основа — настенный плакат 1980-х годов: его данные перенесены без изменений, включая неточности того времени (например, год рождения Сталина указан как 1879 — по современным данным 1878, правление Ольги — 945–966&nbsp;гг.). Строки с голубым фоном добавлены до 2026 года: у М.&nbsp;С.&nbsp;Горбачёва завершено правление (1985–1991, умер в 2022&nbsp;г.) и добавлены руководители Российской Федерации. Аббревиатура «н.&nbsp;в.» — наше время: правление продолжается. Нумерация строк сквозная — на неё удобно ссылаться при подготовке к уроку.
+  </div>
+
+  <footer>
+    Источники: плакат «Правители государства с древнейших времён» (предоставлен пользователем, 703×1024; текст распознан с двукратной сверкой по фрагментам) и общедоступные биографические данные о руководителях страны после 1985 г. Дополнение актуально на октябрь 2026 г. Одностраничный HTML-файл, работает без интернета.
+  </footer>
+</main>
+
+<script>
+const ERAS=[
+ {id:'nov',station:'Новгород',cap:'Столица — г. Новгород',span:'легендарное время — 879',cls:'nov',color:'var(--nov)',rows:[
+  {y:'—',n:'Гостомысл',l:'—'},
+  {y:'862 — 879',n:'Рюрик',o:'Варяжский',l:'— 879'}
+ ]},
+ {id:'kiev',station:'Киев',cap:'Столица с 862 г. — г. Киев',span:'879 — 1169',cls:'kiev',color:'var(--kiev)',rows:[
+  {y:'879 — 912',n:'Олег',q:'Вещий',l:'— 912'},
+  {div:'РЮРИКОВИЧИ',sub:'династия — с 912 г. до смуты 1598 г.'},
+  {y:'912 — 945',n:'Игорь',l:'— 945х'},
+  {y:'945 — 966',n:'Ольга',q:'Святая',l:'— 969'},
+  {y:'966 — 972',n:'Святослав Игоревич',l:'~ 942 — 972х'},
+  {y:'972 — 980',n:'Ярополк I Святославич',l:'~ 961 — 980х'},
+  {y:'980 — 1015',n:'Владимир Святославич',q:'Святой',l:'~ 960 — 1015'},
+  {y:'1015 — 1019',n:'Святополк I Владимирович',q:'Окаянный',l:'~ 980 — 1019'},
+  {y:'1019 — 1054',n:'Ярослав I Владимирович',q:'Мудрый',l:'~ 978 — 1054'},
+  {y:'1054 — 1068',n:'Изяслав I Ярославич',l:'1024 — 1078х'},
+  {y:'1068 — 1069',n:'Всеслав Брячиславич',o:'Полоцкий',l:'— 1101'},
+  {y:'1069 — 1073',n:'Изяслав I Ярославич',l:'1024 — 1078х'},
+  {y:'1073 — 1076',n:'Святослав Ярославич',l:'1027 — 1076'},
+  {y:'1076 — 1078',n:'Изяслав I Ярославич',l:'1024 — 1078х'},
+  {y:'1078 — 1093',n:'Всеволод I Ярославич',l:'1030 — 1093'},
+  {y:'1093 — 1113',n:'Святополк II Изяславич',l:'1050 — 1113'},
+  {y:'1113 — 1125',n:'Владимир Всеволодович',q:'Мономах',l:'1053 — 1125'},
+  {y:'1125 — 1132',n:'Мстислав Владимирович',q:'Великий',l:'1076 — 1132'},
+  {y:'1132 — 1139',n:'Ярополк II Владимирович',l:'1082 — 1139'},
+  {y:'1139 — 1146',n:'Всеволод II Ольгович',o:'Новгород-Северский',l:'— 1146'},
+  {y:'1146 — 1146',n:'Игорь Ольгович',l:'— 1147х'},
+  {y:'1146 — 1149',n:'Изяслав II Мстиславич',o:'Владимиро-Волынский',l:'~ 1097 — 1154'},
+  {y:'1149 — 1151',n:'Юрий I Владимирович',q:'Долгорукий',l:'~ 1090 — 1157'},
+  {y:'1151 — 1154',n:'Изяслав II Мстиславич',l:'~ 1097 — 1154'},
+  {y:'1154 — 1155',n:'Ростислав Мстиславич',o:'Смоленский',l:'— 1167'},
+  {y:'1155 — 1157',n:'Юрий I Владимирович',q:'Долгорукий',l:'~ 1090 — 1157'},
+  {y:'1157 — 1159',n:'Изяслав III Давидович',o:'Черниговский',l:'— 1162х'},
+  {y:'1159 — 1167',n:'Ростислав Мстиславич',l:'— 1167'},
+  {y:'1167 — 1169',n:'Мстислав Изяславич',o:'Владимиро-Волынский',l:'— 1170х'}
+ ]},
+ {id:'vlad',station:'Владимир',cap:'Столица с 1169 г. — г. Владимир',span:'1169 — 1328',cls:'vlad',color:'var(--vlad)',rows:[
+  {y:'1169 — 1174',n:'Андрей Юрьевич',q:'Боголюбский',l:'~ 1111 — 1174х'},
+  {y:'1174 — 1175',n:'Михаил Юрьевич',l:'— 1176'},
+  {y:'1175 — 1175',n:'Ярополк III Ростиславич',l:'— 1181'},
+  {y:'1175 — 1176',n:'Михаил Юрьевич',l:'— 1176'},
+  {y:'1176 — 1212',n:'Всеволод III Юрьевич',q:'Большое гнездо',l:'1154 — 1212'},
+  {y:'1212 — 1216',n:'Юрий II Всеволодович',l:'1188 — 1238х'},
+  {y:'1216 — 1218',n:'Константин Всеволодович',q:'Добрый',l:'1186 — 1218'},
+  {y:'1218 — 1238',n:'Юрий II Всеволодович',l:'1188 — 1238х'},
+  {y:'1238 — 1246',n:'Ярослав II Всеволодович',l:'1191 — 1246х'},
+  {y:'1246 — 1247',n:'Святослав Всеволодович',l:'— 1252'},
+  {y:'1247 — 1248',n:'Михаил Ярославич',q:'Храбрый',l:'— 1248х'},
+  {y:'1249 — 1252',n:'Андрей Ярославич',l:'~ 1221 — 1264'},
+  {y:'1252 — 1263',n:'Александр Ярославич',q:'Невский',l:'1220 — 1263'},
+  {y:'1263 — 1272',n:'Ярослав III Ярославич',l:'1230 — 1272'},
+  {y:'1272 — 1276',n:'Василий Ярославич',o:'Костромской',l:'1241 — 1276'},
+  {y:'1276 — 1283',n:'Дмитрий Александрович',o:'Переяславский',l:'~ 1250 — 1294'},
+  {y:'1283 — 1284',n:'Андрей Александрович',o:'Городецкий',l:'— 1304'},
+  {y:'1284 — 1293',n:'Дмитрий Александрович',l:'~ 1250 — 1294'},
+  {y:'1293 — 1304',n:'Андрей Александрович',l:'— 1304'},
+  {y:'1304 — 1317',n:'Михаил Ярославич',q:'Святой',o:'Тверской',l:'1271 — 1318х'},
+  {y:'1317 — 1322',n:'Юрий III Данилович',l:'~ 1281 — 1325х'},
+  {y:'1322 — 1326',n:'Дмитрий Михайлович',q:'Грозные очи',l:'1299 — 1326х'},
+  {y:'1326 — 1327',n:'Александр Михайлович',o:'Тверской',l:'1301 — 1339х'}
+ ]},
+ {id:'mos',station:'Москва',cap:'Столица перемещается в г. Москву',span:'1328 — 1712',cls:'mos',color:'var(--mos)',rows:[
+  {y:'1328 — 1340',n:'Иван I Данилович',q:'Калита',l:'— 1340'},
+  {y:'1340 — 1353',n:'Семён Иванович',q:'Гордый',l:'1316 — 1353'},
+  {y:'1353 — 1359',n:'Иван II Иванович',q:'Красный',l:'1326 — 1359'},
+  {y:'1359 — 1368',n:'Алексей Фёдорович Бяконт',o:'митрополит',l:'~ 1293 — 1378'},
+  {y:'1368 — 1389',n:'Дмитрий Иванович',q:'Донской',l:'1350 — 1389'},
+  {y:'1389 — 1425',n:'Василий I Дмитриевич',l:'1371 — 1425'},
+  {y:'1425 — 1432',n:'Софья Витовтовна',o:'Литовская',l:'1371 — 1453'},
+  {y:'1432 — 1446',n:'Василий II Васильевич',l:'1415 — 1462'},
+  {y:'1446 — 1447',n:'Дмитрий Юрьевич',q:'Шемяка',l:'1420 — 1453х'},
+  {y:'1447 — 1462',n:'Василий II Васильевич',q:'Тёмный',l:'1415 — 1462'},
+  {y:'1462 — 1505',n:'Иван III Васильевич',l:'1440 — 1505'},
+  {y:'1505 — 1533',n:'Василий III Иванович',l:'1479 — 1533'},
+  {y:'1533 — 1538',n:'Елена Васильевна Глинская',l:'— 1538х'},
+  {y:'1538 — 1548',n:'Бояре Шуйские, Бельские',l:''},
+  {y:'1548 — 1574',n:'Иван IV Васильевич',q:'Грозный',l:'1530 — 1584'},
+  {y:'1574 — 1576',n:'Семён Бекбулатович',o:'Касимовский',l:'— 1616'},
+  {y:'1576 — 1584',n:'Иван IV Васильевич',q:'Грозный',l:'1530 — 1584'},
+  {y:'1584 — 1587',n:'Фёдор Иванович',q:'Блаженный',l:'1557 — 1598'},
+  {y:'1587 — 1605',n:'Борис Фёдорович Годунов',l:'1551 — 1605'},
+  {y:'1605 — 1605',n:'Фёдор Борисович Годунов',l:'1589 — 1605х'},
+  {y:'1605 — 1606',n:'Лжедмитрий I',o:'(Отрепьев Григорий)',l:'— 1606х'},
+  {y:'1606 — 1610',n:'Василий Иванович Шуйский',l:'1552 — 1612'},
+  {y:'1610 — 1610',n:'«Семибоярщина»',l:''},
+  {y:'1610 — 1612',n:'Владислав IV Сигизмундович Ваза',o:'Польский',l:'1595 — 1648'},
+  {div:'РОМАНОВЫ',sub:'династия — с 1613 г. до 1917 г.'},
+  {y:'1613 — 1645',n:'Михаил Фёдорович',q:'Кроткий',l:'1596 — 1645'},
+  {y:'1645 — 1676',n:'Алексей Михайлович',l:'1629 — 1676'},
+  {y:'1676 — 1682',n:'Фёдор Алексеевич',l:'1661 — 1682'},
+  {y:'1682 — 1689',n:'Софья Алексеевна',l:'1657 — 1704'}
+ ]},
+ {id:'spb',station:'Санкт-Петербург',cap:'Столица с 1703 г. — г. Санкт-Петербург',span:'1689 — 1917',cls:'spb',color:'var(--spb)',rows:[
+  {y:'1689 — 1725',n:'Пётр I Алексеевич',q:'Великий',l:'1672 — 1725'},
+  {y:'1725 — 1727',n:'Екатерина I Алексеевна',o:'Скавронская',l:'1684 — 1727'},
+  {y:'1727 — 1730',n:'Пётр II Алексеевич',l:'1715 — 1730'},
+  {y:'1730 — 1740',n:'Анна Ивановна',o:'племянница Петра I',l:'1693 — 1740'},
+  {y:'1740 — 1741',n:'Иван VI Антонович',o:'правнук Петра I',l:'1740 — 1764х'},
+  {y:'1741 — 1761',n:'Елизавета Петровна',l:'1709 — 1761'},
+  {y:'1761 — 1762',n:'Пётр III Фёдорович',o:'внук Петра I',l:'1728 — 1762х'},
+  {y:'1762 — 1796',n:'Екатерина II Алексеевна',q:'Великая',l:'1729 — 1796'},
+  {y:'1796 — 1801',n:'Павел Петрович',l:'1754 — 1801х'},
+  {y:'1801 — 1825',n:'Александр I Павлович',q:'Благословенный',l:'1777 — 1825'},
+  {y:'1825 — 1825',n:'Константин Павлович',l:'1779 — 1831'},
+  {y:'1825 — 1855',n:'Николай I Павлович',l:'1796 — 1855'},
+  {y:'1855 — 1881',n:'Александр II Николаевич',l:'1818 — 1881х'},
+  {y:'1881 — 1894',n:'Александр III Александрович',l:'1845 — 1894'},
+  {y:'1894 — 1917',n:'Николай II Александрович',l:'1868 — 1918х'},
+  {y:'1917 — 1917',n:'Георгий Евгеньевич Львов',l:'1861 — 1925'},
+  {y:'1917 — 1917',n:'Александр Фёдорович Керенский',l:'1881 — 1970'}
+ ]},
+ {id:'ussr',station:'Москва',cap:'Столица с 11 марта 1918 г. — г. Москва',span:'1917 — наши дни',cls:'ussr',color:'var(--ussr)',rows:[
+  {y:'1917 — 1923',n:'Владимир Ильич Ленин',l:'1870 — 1924'},
+  {y:'1923 — 1953',n:'Иосиф Виссарионович Сталин',l:'1879 — 1953'},
+  {y:'1953 — 1953',n:'Георгий Максимилианович Маленков',l:'1902 — 1988'},
+  {y:'1953 — 1964',n:'Никита Сергеевич Хрущёв',l:'1894 — 1971'},
+  {y:'1964 — 1982',n:'Леонид Ильич Брежнев',l:'1906 — 1982'},
+  {y:'1982 — 1984',n:'Юрий Владимирович Андропов',l:'1914 — 1984'},
+  {y:'1984 — 1985',n:'Константин Устинович Черненко',l:'1911 — 1985'},
+  {y:'1985 — 1991',n:'Михаил Сергеевич Горбачёв',l:'1931 — 2022'},
+  {div:'РОССИЙСКАЯ ФЕДЕРАЦИЯ',sub:'с 26 декабря 1991 г.',pill:'rf'},
+  {y:'1991 — 1999',n:'Борис Николаевич Ельцин',l:'1931 — 2007',add:true},
+  {y:'2000 — 2008',n:'Владимир Владимирович Путин',l:'род. 1952',add:true},
+  {y:'2008 — 2012',n:'Дмитрий Анатольевич Медведев',l:'род. 1965',add:true},
+  {y:'2012 — н. в.',n:'Владимир Владимирович Путин',l:'род. 1952',add:true}
+ ]}
+];
+
+function dur(y){
+  const m=y.match(/\d{4}/g);
+  if(!m||!m.length)return'';
+  if(/н\.\s?в\./.test(y)){
+    const o=new Date().getFullYear()-+m[0];
+    return o+' '+(o%10===1&&o%100!==11?'год':(o%10>=2&&o%10<=4&&(o%100<10||o%100>=20)?'года':'лет'));
+  }
+  if(m.length<2)return'';
+  const d=+m[1]-+m[0];
+  if(d===0)return'< 1 года';
+  return d+' '+(d%10===1&&d%100!==11?'год':(d%10>=2&&d%10<=4&&(d%100<10||d%100>=20)?'года':'лет'));
+}
+let num=0,total=0;
+const html=ERAS.map(e=>{
+  const rows=e.rows.map(r=>{
+    if(r.div)return `<tr class="divider" data-t=" ${r.div} ${r.sub||''} "><td colspan="5"><span class="dyn ${r.pill||'ryur'}">${r.div}</span> <span style="color:var(--muted);font-size:12.5px">${r.sub||''}</span></td></tr>`;
+    num++;total++;
+    const life=r.l?r.l.replace(/х$/,'<span class="mark-x">х</span>'):'—';
+    const nick=r.q?` <span class="nick">«${r.q}»</span>`:'';
+    const org=r.o?` <span class="origin">${r.o}</span>`:'';
+    const cls=r.add?' class="added"':'';
+    return `<tr${cls} data-t=" ${r.n} ${r.q||''} ${r.o||''} ${r.y} ${r.l} "><td class="num">${num}</td><td class="years">${r.y}</td><td class="dur">${dur(r.y)}</td><td class="name"><b>${r.n}</b>${nick}${org}</td><td class="life">${life}</td></tr>`;
+  }).join('');
+  return `<section class="era" id="era-${e.id}" style="--era-color:${e.color}">
+    <div class="era-head">
+      <div class="cap">${e.cap}</div>
+      <h2>${e.station}</h2>
+      <div class="span">${e.span}</div>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>№</th><th>Годы правления</th><th>Лет у власти</th><th>Правитель</th><th>Годы жизни</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>
+  </section>`;
+}).join('');
+document.getElementById('eras').innerHTML=html;
+
+/* поиск */
+const q=document.getElementById('q'),cnt=document.getElementById('cnt');
+q.addEventListener('input',()=>{
+  const s=q.value.trim().toLowerCase();let vis=0;
+  document.querySelectorAll('#eras .era').forEach(sec=>{
+    let inSec=0;
+    sec.querySelectorAll('tbody tr').forEach(tr=>{
+      const show=!s||(tr.dataset.t||'').toLowerCase().includes(s);
+      tr.style.display=show?'':'none';
+      if(show&&!tr.classList.contains('divider'))inSec++;
+    });
+    sec.style.display=inSec?'':'none';
+    vis+=inSec;
+  });
+  cnt.textContent=vis;
+});
+
+/* CSV */
+document.getElementById('csv').addEventListener('click',()=>{
+  const esc=v=>'"'+String(v).replace(/"/g,'""')+'"';
+  const out=['Эпоха;Годы правления;Лет у власти;Правитель;Прозвище;Происхождение/примечание;Годы жизни'];
+  num=0;
+  ERAS.forEach(e=>e.rows.forEach(r=>{
+    if(r.div)return;num++;
+    out.push([e.station,r.y,dur(r.y),r.n,r.q||'',r.o||'',r.l].map(esc).join(';'));
+  }));
+  const blob=new Blob(['\ufeff'+out.join('\n')],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='praviteli-gosudarstva.csv';a.click();URL.revokeObjectURL(a.href);
+});
+
+
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4bc70e2c01a94c73b74392e4234840661791215815920" integrity="sha512-L0ha0OXavK/8okipN9F8BtP84dg9DUhPERbBXzwI6dgTA55d2+yweo3pn5CSFYs45/r8md2+xvUPtTdvTNRfjA==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
