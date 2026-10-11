@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { profileByKey } from '../data/profiles'
-import { ERA_COLOR, ERAS, REIGNS, TIMELINE, eraLabel } from '../data/rulers'
+import { ERA_COLOR, ERAS, TIMELINE, eraLabel } from '../data/rulers'
 import type { EraId } from '../types'
 import { yearsDuration } from '../utils'
 import { CenturyRail } from './CenturyRail'

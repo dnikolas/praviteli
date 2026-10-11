@@ -38,7 +38,6 @@ export function Stats() {
     <div className="wrap">
       <div className="page-head">
         <h1>Сводка по таблице</h1>
-        <p>Цифры считаются на устройстве из того же массива, что и каталог. Строки ведут в отфильтрованный список.</p>
       </div>
       <div className="stats-grid">
         <div className="stat">

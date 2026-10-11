@@ -45,7 +45,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); overflow-x: clip; }
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -184,7 +184,7 @@ button.chip { cursor: pointer; }
 h1, .hero h1 {
   font-family: var(--serif);
   font-size: clamp(34px, 5vw, 48px); line-height: 1.06; font-weight: 700;
-  max-width: 12ch;
+  max-width: 22ch;
 }
 .hero h1 span {
   display: block;
@@ -534,23 +534,34 @@ td.name a:hover, .name-link:hover { color: var(--accent); }
 .menu-btn { display: none; }
 
 @media (max-width: 800px) {
+  .wrap { width: calc(100% - 24px); }
+  .app-header .inner { gap: 10px; }
+  .header-tools { margin-left: auto; gap: 6px; }
+  .brand span { white-space: nowrap; font-size: 9px; letter-spacing: .04em; }
+  .hero { padding: 24px 0 4px; }
   .hero-grid { grid-template-columns: 1fr; gap: 22px; align-items: start; }
   .hero h1 { max-width: none; }
+  .lede { max-width: none; }
   .detail-top { grid-template-columns: 1fr; }
-  .portrait img, .portrait-fallback { max-width: 240px; }
+  .portrait img, .portrait-fallback { max-width: 220px; }
+  .toolbar { align-items: stretch; }
   .sort { width: 100%; }
   .sort select { flex: 1; }
+  .toolbar .btn { width: 100%; }
+  .filters select, .filters label.check { width: 100%; }
   .annal-row, .annal-head { grid-template-columns: 28px 132px minmax(0, 1fr); }
   .annal-dur, .annal-life { display: none; }
   .card { grid-template-columns: 1fr; gap: 2px; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
+  .neighbors .neighbor, .neighbors a { max-width: 100%; }
   .header-search { display: none; width: auto; }
   .icon-btn.search-toggle { display: grid; }
+  .global-search { position: static; }
   .global-search.is-mobile-open .header-search {
     display: flex; position: absolute; left: 0; right: 0; top: calc(100% + 8px);
     width: auto; z-index: 90;
   }
-  .global-search.is-mobile-open .search-pop { left: 0; right: 0; width: auto; top: calc(100% + 52px); }
+  .global-search.is-mobile-open .search-pop { left: 0; right: 0; width: auto; top: calc(100% + 60px); }
   .nav { display: none; }
   .nav.open {
     display: flex; position: absolute; left: 0; right: 0; top: 100%;
@@ -558,6 +569,8 @@ td.name a:hover, .name-link:hover { color: var(--accent); }
     padding: 8px 16px 12px; flex-direction: column;
   }
   .menu-btn { display: grid; }
+  .time-axis-band span, .time-axis-ticks { display: none; }
+  .time-axis-bands { height: 16px; }
 }
 
 @media (max-width: 560px) {
