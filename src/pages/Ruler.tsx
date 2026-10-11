@@ -1,4 +1,4 @@
-import { useEffect, type CSSProperties } from 'react'
+import { useEffect, useLayoutEffect, type CSSProperties } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import { LifeText } from '../components/ReignName'
 import { Portrait } from '../components/Portrait'
@@ -18,6 +18,12 @@ export function Ruler() {
     if (!reign) return
     document.title = `${reign.name} — Правители`
   }, [reign])
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }, [id])
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {

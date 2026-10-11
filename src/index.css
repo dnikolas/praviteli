@@ -365,6 +365,16 @@ td.name a:hover, .name-link:hover { color: var(--accent); }
 .era-rail-item:hover, .era-rail-item.is-active { border-color: var(--ink); color: var(--accent); }
 .chronicle-body { display: grid; grid-template-columns: minmax(0, 1fr); }
 .century-rail { display: none; }
+.century-rail-track { position: relative; height: 100%; border-left: 1px solid var(--line); }
+.century-rail-now {
+  position: absolute; left: -1px; width: 3px; background: var(--accent); border-radius: 2px;
+}
+.century-rail-tick {
+  position: absolute; left: 10px; transform: translateY(-50%);
+  font: 500 11px/1 var(--mono); color: var(--muted);
+  border: 0; background: none; padding: 0; cursor: pointer;
+}
+.century-rail-tick:hover { color: var(--accent); }
 
 .annals { padding-bottom: 24px; }
 .era-chapter { padding: 28px 0 8px; scroll-margin-top: calc(var(--header-h) + var(--cluster-h) + 8px); }
@@ -571,6 +581,23 @@ td.name a:hover, .name-link:hover { color: var(--accent); }
   .menu-btn { display: grid; }
   .time-axis-band span, .time-axis-ticks { display: none; }
   .time-axis-bands { height: 16px; }
+  .era-cluster {
+    position: static;
+    z-index: auto;
+  }
+  .era-chapter { scroll-margin-top: calc(var(--header-h) + 8px); }
+  .chronicle-body {
+    grid-template-columns: minmax(0, 1fr) 28px;
+    gap: 8px;
+    align-items: start;
+  }
+  .century-rail {
+    display: block;
+    position: sticky;
+    top: calc(var(--header-h) + 10px);
+    height: calc(100vh - var(--header-h) - 24px);
+  }
+  .century-rail-tick { left: 6px; font-size: 10px; }
 }
 
 @media (max-width: 560px) {
@@ -594,16 +621,6 @@ td.name a:hover, .name-link:hover { color: var(--accent); }
     top: calc(var(--header-h) + var(--cluster-h) + 16px);
     height: calc(100vh - var(--header-h) - var(--cluster-h) - 48px);
   }
-  .century-rail-track { position: relative; height: 100%; border-left: 1px solid var(--line); }
-  .century-rail-now {
-    position: absolute; left: -1px; width: 3px; background: var(--accent); border-radius: 2px;
-  }
-  .century-rail-tick {
-    position: absolute; left: 10px; transform: translateY(-50%);
-    font: 500 11px/1 var(--mono); color: var(--muted);
-    border: 0; background: none; padding: 0; cursor: pointer;
-  }
-  .century-rail-tick:hover { color: var(--accent); }
 }
 
 @media print {

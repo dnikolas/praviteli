@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { useLayoutEffect, useState } from 'react'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { COPY } from '../data/rulers'
 import { useTheme } from '../theme'
 import { GlobalSearch } from './GlobalSearch'
@@ -13,7 +13,24 @@ const NAV = [
 
 export function Layout() {
   const { theme, toggle } = useTheme()
+  const { pathname, hash } = useLocation()
   const [open, setOpen] = useState(false)
+
+  useLayoutEffect(() => {
+    window.history.scrollRestoration = 'manual'
+  }, [])
+
+  useLayoutEffect(() => {
+    if (hash) return
+    const reset = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+    }
+    reset()
+    const timers = [0, 16, 50, 120, 250].map((ms) => window.setTimeout(reset, ms))
+    return () => timers.forEach((id) => window.clearTimeout(id))
+  }, [pathname, hash])
 
   return (
     <>
