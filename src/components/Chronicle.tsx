@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { profileByKey } from '../data/profiles'
-import { ERA_COLOR, ERAS, TIMELINE, eraLabel } from '../data/rulers'
+import { ERA_COLOR, ERAS, TIMELINE } from '../data/rulers'
 import type { EraId } from '../types'
 import { yearsDuration } from '../utils'
 import { CenturyRail } from './CenturyRail'
@@ -61,24 +61,6 @@ export function Chronicle() {
             scrollToEra(id)
           }}
         />
-        <nav className="era-rail" aria-label="Эпохи">
-          {ERAS.map((era) => (
-            <a
-              key={era.id}
-              href={`#era-${era.id}`}
-              className={`era-rail-item${active === era.id ? ' is-active' : ''}`}
-              aria-current={active === era.id ? 'true' : undefined}
-              onClick={(e) => {
-                e.preventDefault()
-                setActive(era.id)
-                scrollToEra(era.id)
-              }}
-            >
-              <i className="dot" style={{ '--era': ERA_COLOR[era.id] } as CSSProperties} />
-              {eraLabel(era.id)}
-            </a>
-          ))}
-        </nav>
       </div>
 
       <div className="chronicle-body">
