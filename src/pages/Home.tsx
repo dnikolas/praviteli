@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Chronicle } from '../components/Chronicle'
 import { COPY } from '../data/rulers'
 import { usePageTitle } from '../usePageTitle'
@@ -14,6 +15,9 @@ export function Home() {
               <span>{COPY.titleRest}</span>
             </h1>
             <p className="lede">{COPY.lede}</p>
+            <p className="ribbon-entry">
+              <Link to="/timeline">Шкала с портретами</Link>
+            </p>
           </div>
           <blockquote className="epigraph">
             <p>{COPY.epigraph}</p>

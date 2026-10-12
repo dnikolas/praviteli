@@ -45,3 +45,35 @@ export function IconMenu(props: IconProps) {
     </Svg>
   )
 }
+
+export function IconChevronLeft(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M14.5 5.5 8 12l6.5 6.5" {...stroke} />
+    </Svg>
+  )
+}
+
+export function IconChevronRight(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M9.5 5.5 16 12l-6.5 6.5" {...stroke} />
+    </Svg>
+  )
+}
+
+export function IconPlay(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M8 6.5v11l10-5.5-10-5.5Z" {...stroke} />
+    </Svg>
+  )
+}
+
+export function IconPause(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M8 6v12M16 6v12" {...stroke} />
+    </Svg>
+  )
+}

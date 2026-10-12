@@ -12,30 +12,43 @@ export function Portrait({
   name,
   compact,
   tile,
+  rail,
   hideEmpty,
 }: {
   profile?: PersonProfile
   name: string
   compact?: boolean
   tile?: boolean
+  rail?: boolean
   hideEmpty?: boolean
 }) {
   const pic = profile?.portrait
   const [failed, setFailed] = useState(false)
-  if (compact || tile) {
-    const cls = tile ? 'thumb thumb-tile' : 'thumb'
+  if (rail || compact || tile) {
+    const cls = rail ? 'ribbon-face' : tile ? 'thumb thumb-tile' : 'thumb'
     if (!pic || failed) {
-      if (hideEmpty && !tile) return null
-      if (tile) {
+      if (hideEmpty && !tile && !rail) return null
+      if (rail || tile) {
         return (
-          <span className={`${cls} thumb-empty`} aria-hidden>
+          <span className={`${cls} ${rail ? 'ribbon-face-empty' : 'thumb-empty'}`} aria-hidden>
             {initials(name)}
           </span>
         )
       }
       return <span className="thumb thumb-empty" aria-hidden />
     }
-    return <img className={cls} src={pic.src} alt="" onError={() => setFailed(true)} />
+    return (
+      <img
+        className={cls}
+        src={pic.src}
+        alt=""
+        width={rail ? 58 : undefined}
+        height={rail ? 74 : undefined}
+        loading={rail ? 'lazy' : undefined}
+        decoding={rail ? 'async' : undefined}
+        onError={() => setFailed(true)}
+      />
+    )
   }
   if (!pic || failed) {
     return (
