@@ -97,7 +97,7 @@ function ribbonEntries(reigns: Reign[]): Entry[] {
 export function Timeline() {
   usePageTitle('Чреда правлений — Правители')
   const [params, setParams] = useSearchParams()
-  const selected = reignById(params.get('id') ?? '')
+  const selected = reignById(params.get('id') ?? '') ?? REIGNS[0]
   const [playing, setPlaying] = useState(false)
   const [reduced, setReduced] = useState(false)
   const [live, setLive] = useState('')

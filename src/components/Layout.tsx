@@ -7,7 +7,7 @@ import { IconMenu, IconMoon, IconSun } from './Icons'
 
 const NAV = [
   { to: '/', label: 'Хронология', end: true },
-  { to: '/timeline', label: 'Шкала' },
+  { to: '/timeline', label: 'Череда' },
   { to: '/catalog', label: 'Каталог' },
   { to: '/stats', label: 'Сводка' },
 ]

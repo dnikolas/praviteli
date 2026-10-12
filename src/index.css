@@ -636,15 +636,6 @@ td.name a:hover, .name-link:hover { color: var(--accent); }
   }
 }
 
-.ribbon-entry { margin-top: 18px; }
-.ribbon-entry a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-weight: 600;
-  color: var(--accent);
-  text-underline-offset: 4px;
-}
 .ribbon-wrap { width: min(1120px, calc(100% - 32px)); }
 body:has(.ribbon-page) { overflow: hidden; }
 .ribbon-page {
